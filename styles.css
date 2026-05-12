@@ -716,15 +716,10 @@ body {
     font-weight: 600;
 }
 
-.sabe-page .btn-elogio {
-    margin-top: 10px;
-    flex-shrink: 0; /* Garante que o botão não encolha */
-    position: sticky;
-}
+
 
 .sabe-page .btn-elogio {
     position: absolute;
-    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
     border: 2px solid var(--green-dark);
