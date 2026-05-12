@@ -1,0 +1,943 @@
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Cores principais */
+    --green-dark: #0c9543;
+    --green-light: #118740;
+    --green-gradient: linear-gradient(180deg, #118740, #0c9744 20.05%);
+    --ivory: #fffdee;
+    --red: #cf464a;
+    --red-light: #e57373;
+    --white: #ffffff;
+    --gray-bg: #e5e5e5;
+    --text-dark: #333333;
+    --border-radius-lg: 32px;
+    --border-radius-md: 18px;
+    --border-radius-sm: 12px;
+    --font: 'Montserrat', sans-serif;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font);
+    background-color: var(--gray-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* ============================================
+   MOBILE CONTAINER (simula telemóvel)
+   ============================================ */
+.page {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* ============================================
+   PÁGINA LANDING (index.html)
+   ============================================ */
+.landing {
+    min-height: 100vh;
+    background-color: var(--ivory);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 30px 40px;
+    text-align: left;
+}
+
+.landing .date {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--green-dark);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.landing h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    line-height: 1.15;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.landing h1 .highlight {
+    font-size: 2.25rem;
+    display: inline;
+}
+
+.landing .subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--green-dark);
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.landing .btn-continue {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--green-dark);
+    border-radius: 38px;
+    padding: 14px 40px;
+    color: var(--green-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    margin-bottom: 40px;
+    transition: all 0.2s;
+}
+
+.landing .btn-continue:hover {
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+.landing .illustration {
+    width: 228px;
+    height: 107px;
+    object-fit: cover;
+    margin-top: auto;
+}
+
+/* ============================================
+   PÁGINA HOME (home.html)
+   ============================================ */
+.home {
+    min-height: 100vh;
+    background: var(--green-gradient);
+    display: flex;
+    flex-direction: column;
+}
+
+.home .header {
+    padding: 55px 20px 35px;
+    color: var(--white);
+}
+
+.home .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.home .header h1 .highlight {
+    font-size: 2.25rem;
+    font-weight: 800;
+}
+
+.home .content {
+    background-color: var(--ivory);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    flex: 1;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.home .section-title {
+    color: var(--green-dark);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.home .card {
+    background-color: var(--red);
+    border-radius: var(--border-radius-md);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    transition: transform 0.2s;
+}
+
+.home .card:active {
+    transform: scale(0.98);
+}
+
+.home .card .icon-box {
+    background-color: var(--white);
+    border-radius: var(--border-radius-sm);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.home .card .icon-box svg {
+    width: 56px;
+    height: 56px;
+}
+
+.home .card .card-label {
+    color: var(--white);
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.home .card .arrow-icon {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    width: 24px;
+    height: 24px;
+    stroke: var(--white);
+}
+
+.home .btn-outline {
+    border: 2px solid var(--green-dark);
+    color: var(--green-dark);
+    border-radius: 24px;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    background: transparent;
+    margin-top: 12px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.home .btn-outline:hover {
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+/* ============================================
+   PÁGINA ESCOLHA ENFERMEIRO (escolha-enf.html)
+   ============================================ */
+.escolha-enf {
+    min-height: 100vh;
+    background: var(--green-gradient);
+    display: flex;
+    flex-direction: column;
+}
+
+.escolha-enf .header-title {
+    padding: 50px 16px 0;
+    color: var(--white);
+}
+
+.escolha-enf .header-title h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.escolha-enf .header-title h1 .highlight {
+    font-size: 2.25rem;
+}
+
+.escolha-enf .content-panel {
+    background-color: var(--ivory);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    flex: 1;
+    padding: 30px 16px 40px;
+    margin-top: 10px;
+}
+
+.escolha-enf .section-label {
+    color: var(--green-dark);
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.escolha-enf .nurse-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.escolha-enf .nurse-card {
+    background-color: var(--red);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 12px;
+    transition: transform 0.2s;
+}
+
+.escolha-enf .nurse-card:active {
+    transform: scale(0.97);
+}
+
+.escolha-enf .nurse-card .photo-area {
+    width: calc(100% - 24px);
+    margin: 12px 12px 0;
+    aspect-ratio: 1 / 1;
+    background-color: #ccc;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+}
+
+.escolha-enf .nurse-card .photo-area img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.escolha-enf .nurse-card .nurse-name {
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 10px 8px 4px;
+    line-height: 1.2;
+}
+
+/* Botão voltar / fechar no topo */
+.back-btn {
+    position: absolute;
+    top: 34px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    z-index: 10;
+}
+
+.back-btn span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background-color: var(--white);
+    border-radius: 2px;
+    position: absolute;
+}
+
+.back-btn span:first-child {
+    transform: rotate(45deg);
+}
+
+.back-btn span:last-child {
+    transform: rotate(-45deg);
+}
+
+/* ============================================
+   PÁGINA ELOGIO (elogio.html / enf-ang.html)
+   ============================================ */
+.elogio-page {
+    min-height: 100vh;
+    background: var(--green-gradient);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.elogio-page .profile-circle-outer {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 152px;
+    height: 152px;
+    border-radius: 50%;
+    background-color: var(--ivory);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.elogio-page .profile-circle-inner {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: var(--green-dark);
+    overflow: hidden;
+}
+
+.elogio-page .profile-circle-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.elogio-page .content-panel {
+    background-color: var(--ivory);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    margin-top: 160px;
+    flex: 1;
+    padding: 30px 16px 40px;
+}
+
+.elogio-page .title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+}
+
+.elogio-page .text-area-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.elogio-page .text-area-bg {
+    width: 100%;
+    height: 260px;
+    background-color: var(--red);
+    border-radius: var(--border-radius-md);
+    padding: 20px;
+}
+
+.elogio-page .text-area-inner {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: var(--border-radius-sm);
+    padding: 16px;
+    font-family: var(--font);
+    font-size: 1rem;
+    font-weight: 300;
+    color: #666;
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+.elogio-page .inspiration-btn {
+    width: 100%;
+    border: 2px solid var(--red);
+    border-radius: var(--border-radius-md);
+    padding: 18px 20px;
+    font-family: var(--font);
+    font-size: 0.95rem;
+    color: var(--red);
+    background: transparent;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.elogio-page .inspiration-btn .bold {
+    font-weight: 600;
+}
+
+.elogio-page .inspiration-btn .extra-bold {
+    font-weight: 800;
+}
+
+.elogio-page .inspiration-btn .light {
+    font-weight: 300;
+}
+
+.elogio-page .inspiration-btn:hover {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+/* ============================================
+   PÁGINA EQUIPA (equipa.html)
+   ============================================ */
+.equipa-page {
+    min-height: 100vh;
+    background: var(--green-gradient);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.equipa-page .header-title {
+    padding: 50px 16px 0;
+    color: var(--white);
+}
+
+.equipa-page .header-title h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.equipa-page .header-title h1 .highlight {
+    font-size: 2.25rem;
+}
+
+/* Content panel — padding-top reserva espaço para o círculo (156px) que sobressai 80px */
+.equipa-page .content-panel {
+    background-color: var(--ivory);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    margin-top: 20px;
+    flex: 1;
+    padding: 96px 16px 40px;
+    position: relative;
+}
+
+/* ---- CARD (group-parent do Figma) ----
+   Altura total 256px; position relative para os filhos absolute */
+.equipa-page .team-card {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 256px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-bottom: 24px;
+}
+
+/* Rectângulo vermelho — começa a 80px do topo (group-child do Figma: top 80px, height 176px) */
+.equipa-page .team-card::before {
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    height: 176px;
+    background-color: var(--red);
+    border-radius: var(--border-radius-md);
+}
+
+/* Círculo ivory com ícone — centrado, top: 0 (group-item do Figma: top 0, left 86px, 156×156) */
+.equipa-page .team-card-icon-circle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 156px;
+    height: 156px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.equipa-page .team-card-icon-circle svg {
+    width: 156px;
+    height: 156px;
+}
+
+/* Zona inferior: seta + texto (vector-parent do Figma: top 112px, left 14px)
+   flex-direction column, align-items flex-end → seta à direita, texto stretch */
+.equipa-page .team-card-bottom {
+    position: absolute;
+    top: 112px;
+    left: 14px;
+    right: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 16px;
+    gap: 12px;
+    z-index: 2;
+}
+
+/* Seta SVG (frame-child do Figma: 25.5×22.1px, alinhada à direita) */
+.equipa-page .team-card-arrow {
+    width: 26px;
+    height: 22px;
+    flex-shrink: 0;
+}
+
+.equipa-page .team-card-arrow svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Bloco de texto (a-nossa-equipa-parent do Figma: align-self stretch, gap 10px) */
+.equipa-page .team-card-text {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.equipa-page .team-card-text h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: pre-wrap;
+}
+
+.equipa-page .team-card-text p {
+    color: var(--white);
+    font-size: 0.875rem;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+/* Botão "Porque é que isto é importante?" */
+.equipa-page .btn-important {
+    display: block;
+    width: 100%;
+    border: 2px solid var(--green-dark);
+    border-radius: var(--border-radius-md);
+    padding: 16px;
+    text-align: center;
+    color: var(--green-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    background: transparent;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.equipa-page .btn-important:hover {
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+/* ============================================
+   PÁGINA SABE+ (sabe+.html)
+   ============================================ */
+.sabe-page {
+    min-height: 100vh;
+    background: var(--green-gradient);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.sabe-page .header-title {
+    padding: 50px 16px 0;
+    color: var(--white);
+}
+
+.sabe-page .header-title h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.sabe-page .header-title h1 .highlight {
+    font-size: 2.25rem;
+}
+
+.sabe-page .content-panel {
+    background-color: var(--ivory);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    margin-top: 30px;
+    flex: 1;
+    padding: 30px 16px 80px;
+    position: relative;
+    overflow-y: auto;
+}
+
+.sabe-page .content-panel h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+}
+.sabe-page .scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    padding-bottom: 20px;
+    /* Scroll suave para telemóveis */
+    -webkit-overflow-scrolling: touch;
+}
+
+.sabe-page .content-panel .info-text {
+    font-size: 0.9rem;
+    color: var(--red);
+    line-height: 1.6;
+}
+
+.sabe-page .content-panel .info-text p {
+    margin-bottom: 12px;
+}
+
+.sabe-page .content-panel .info-text .strong {
+    font-weight: 600;
+}
+
+.sabe-page .content-panel .info-text .light {
+    font-weight: 300;
+}
+
+.sabe-page .content-panel .info-text ul {
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+.sabe-page .content-panel .info-text ul li {
+    margin-bottom: 8px;
+}
+
+.sabe-page .content-panel .info-text ul li strong {
+    font-weight: 600;
+}
+
+.sabe-page .btn-elogio {
+    margin-top: 10px;
+    flex-shrink: 0; /* Garante que o botão não encolha */
+    position: sticky;
+}
+
+.sabe-page .btn-elogio {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid var(--green-dark);
+    border-radius: var(--border-radius-md);
+    padding: 14px 28px;
+    color: var(--green-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    background: var(--ivory);
+    text-decoration: none;
+    white-space: nowrap;
+    z-index: 2;
+    transition: all 0.2s;
+}
+
+.sabe-page .btn-elogio:hover {
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+/* ============================================
+   PÁGINA INSPIRAÇÃO (Insp.html)
+   ============================================ */
+.insp-page {
+    min-height: 100vh;
+    background: var(--green-gradient);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.insp-page .header-title {
+    padding: 50px 16px 0;
+    color: var(--white);
+}
+
+.insp-page .header-title h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.insp-page .header-title h1 .highlight {
+    font-size: 2.25rem;
+}
+
+.insp-page .content-panel {
+    background-color: var(--ivory);
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+    margin-top: 30px;
+    flex: 1;
+    padding: 30px 16px 80px;
+    position: relative;
+}
+
+.insp-page .content-panel h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 22px;
+}
+
+.insp-page .insp-list {
+    font-size: 0.9rem;
+    color: var(--red);
+    line-height: 2.2;
+}
+
+.insp-page .insp-list .light {
+    font-weight: 300;
+}
+
+.insp-page .insp-list .strong {
+    font-weight: 600;
+}
+
+.insp-page .btn-elogio {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid var(--green-dark);
+    border-radius: var(--border-radius-md);
+    padding: 14px 28px;
+    color: var(--green-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    background: var(--ivory);
+    text-decoration: none;
+    white-space: nowrap;
+    z-index: 2;
+    transition: all 0.2s;
+}
+
+.insp-page .btn-elogio:hover {
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+.insp-page .fade-overlay {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(180deg, rgba(255, 253, 238, 0) 0%, var(--ivory) 50%);
+    pointer-events: none;
+}
+
+/* ============================================
+   PÁGINA OBRIGADO (obg.html)
+   ============================================ */
+.obg-page {
+    min-height: 100vh;
+    background-color: var(--ivory);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 30px 40px;
+    text-align: left;
+}
+
+.obg-page .date {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--green-dark);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.obg-page h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    line-height: 1.2;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.obg-page h1 .sub {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.obg-page .message {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--green-dark);
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.obg-page .btn-again {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--green-dark);
+    border-radius: var(--border-radius-md);
+    padding: 14px 28px;
+    color: var(--green-dark);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    background: transparent;
+    text-decoration: none;
+    margin-bottom: 40px;
+    transition: all 0.2s;
+}
+
+.obg-page .btn-again:hover {
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+.obg-page .illustration {
+    width: 228px;
+    height: 107px;
+    object-fit: cover;
+    margin-top: auto;
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+
+@media screen and (max-width: 360px) {
+    html {
+        font-size: 14px;
+    }
+
+    .landing {
+        padding: 80px 20px 30px;
+    }
+
+    .home .header {
+        padding: 45px 16px 30px;
+    }
+
+    .home .content {
+        padding: 24px 14px;
+    }
+
+    .escolha-enf .nurse-grid {
+        gap: 10px;
+    }
+
+    .escolha-enf .nurse-card .photo-area {
+        width: calc(100% - 16px);
+        margin: 8px 8px 0;
+    }
+}
+
+/* ============================================
+   UTILITÁRIOS
+   ============================================ */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

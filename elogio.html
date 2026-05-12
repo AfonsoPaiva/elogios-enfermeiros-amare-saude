@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600;800&display=swap" />
+    <title>Deixe um elogio</title>
+    <style>
+        /* Botão de enviar no fundo do painel */
+        .btn-enviar {
+            display: block;
+            width: 100%;
+            background-color: var(--green-dark);
+            color: var(--white);
+            border: none;
+            border-radius: var(--border-radius-md);
+            padding: 16px;
+            font-family: var(--font);
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 16px;
+            transition: opacity 0.2s;
+        }
+        .btn-enviar:hover {
+            opacity: 0.88;
+        }
+        .btn-enviar:active {
+            opacity: 0.75;
+        }
+        /* Etiqueta com o nome do enfermeiro abaixo do círculo */
+        .nurse-label {
+            position: absolute;
+            top: 196px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            text-align: center;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="page elogio-page">
+        <a href="./escolha-enf.html" class="back-btn" id="back-link" style="position: absolute; top: 34px; right: 16px; z-index: 10;">
+            <span></span>
+            <span></span>
+        </a>
+
+        <div class="profile-circle-outer">
+            <div class="profile-circle-inner" id="profile-inner">
+                </div>
+        </div>
+
+
+        <div class="content-panel">
+            <div class="title">Deixe um elogio!</div>
+
+            <div class="text-area-wrapper">
+                <div class="text-area-bg">
+                    <textarea class="text-area-inner" id="elogio-text" placeholder="Escreva aqui..."></textarea>
+                </div>
+            </div>
+
+            <a href="./Insp.html" class="inspiration-btn" id="insp-link" style="display: block; text-decoration: none;">
+                <span class="bold">Sem inspiração?</span>
+                <span class="extra-bold"> </span>
+                <span class="light">Vê aqui algumas das coisas que o teu enfermeiro faz por ti</span>
+            </a>
+
+            <button class="btn-enviar" id="btn-enviar" onclick="enviarElogio()">Enviar elogio</button>
+        </div>
+    </div>
+
+    <script>
+        // 1. Ler parâmetros da URL
+        const params = new URLSearchParams(window.location.search);
+        const nome = params.get('nome');
+        const foto = params.get('foto');
+
+        const profileInner = document.getElementById('profile-inner');
+        const nurseLabel   = document.getElementById('nurse-label');
+
+        // 2. Configurar imagem ou ícone
+        if (foto) {
+            profileInner.innerHTML = `<img src="./${foto}" alt="${nome || 'Enfermeiro'}" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:50%;" onerror="this.style.background='#0c9543'" />`;
+        } else {
+            profileInner.style.backgroundColor = '#0c9543';
+            profileInner.style.display = 'flex';
+            profileInner.style.justifyContent = 'center';
+            profileInner.style.alignItems = 'center';
+            profileInner.innerHTML = `
+                <svg width="96" height="65" viewBox="0 0 96 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M26.5947 2.63867C33.5112 2.63879 39.161 8.50188 39.1611 15.7891C39.1611 23.0764 33.5113 28.9403 26.5947 28.9404C19.678 28.9404 14.0283 23.0765 14.0283 15.7891C14.0285 8.5018 19.6781 2.63867 26.5947 2.63867Z" fill="#FDFEFF" stroke="#FDFEFF" stroke-width="1.16899"/>
+                    <path d="M53.4907 42.7261C55.8924 49.9041 42.508 55.243 27.1283 55.243C11.7486 55.243 -1.67139 50.0624 0.169605 42.7261C5.5021 21.4764 23.2771 36.3221 27.1283 36.3221C30.9796 36.3221 46.3807 21.4764 53.4907 42.7261Z" fill="#FDFEFF"/>
+                    <path d="M48.0294 0.584961C58.7986 0.585055 67.5714 9.71039 67.5714 21.0215C67.5713 32.3325 58.7985 41.4579 48.0294 41.458C37.2603 41.458 28.4875 32.3326 28.4874 21.0215C28.4874 9.71033 37.2602 0.584961 48.0294 0.584961Z" fill="#0C9543" stroke="#0C9543" stroke-width="1.16899"/>
+                    <path d="M74.4909 46.9117C76.8926 54.0897 63.5083 59.4286 48.1286 59.4286C32.7488 59.4286 19.3289 54.2479 21.1698 46.9117C26.5023 25.662 44.2773 40.5077 48.1286 40.5077C51.9798 40.5077 67.381 25.662 74.4909 46.9117Z" fill="#FDFEFF"/>
+                </svg>`;
+        }
+
+        // 3. Escrever o nome na etiqueta (CORREÇÃO DO ERRO AQUI)
+        if (nome && nurseLabel) {
+            nurseLabel.textContent = nome;
+        }
+
+        // 4. Função principal de envio
+        async function enviarElogio() {
+            const texto = document.getElementById('elogio-text').value.trim();
+            const btn = document.getElementById('btn-enviar');
+
+            if (!texto) {
+                alert('Por favor escreva o seu elogio antes de enviar.');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = "A enviar...";
+
+            const payload = {
+                nome: nome || 'Equipa de Enfermagem',
+                elogio: texto
+            };
+
+            // Substitua pelo seu URL do Apps Script
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbxYw0YZhtwWBq9oTndMSorTkpbkgGKGCkT4rjB7FmlmxdjoV7McC4RMw_tWmncemc_g/exec';
+
+            try {
+                await fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors', 
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                window.location.href = './obg.html';
+            } catch (error) {
+                console.error('Erro:', error);
+                alert('Houve um erro ao enviar. Tente novamente.');
+                btn.disabled = false;
+                btn.textContent = "Enviar elogio";
+            }
+        }
+
+        // 5. Ajustar links de navegação para manter os parâmetros
+        if (nome || foto) {
+            const inspLink = document.getElementById('insp-link');
+            const inspUrl = new URL('./Insp.html', window.location.href);
+            if (nome) inspUrl.searchParams.set('nome', nome);
+            if (foto) inspUrl.searchParams.set('foto', foto);
+            inspLink.href = inspUrl.toString();
+        }
+
+        const backLink = document.getElementById('back-link');
+        if (!nome && !foto) {
+            backLink.href = './equipa.html';
+        }
+    </script>
+</body>
+</html>
