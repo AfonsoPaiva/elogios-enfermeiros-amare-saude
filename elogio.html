@@ -123,24 +123,19 @@
             btn.disabled = true;
             btn.textContent = "A enviar...";
 
-            const payload = {
-                nome: nome || 'Equipa de Enfermagem',
-                elogio: texto
-            };
-
-            // URL da sua Aplicação Web do Google Script
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxYw0YZhtwWBq9oTndMSorTkpbkgGKGCkT4rjB7FmlmxdjoV7McC4RMw_tWmncemc_g/exec';
 
             try {
-                // Enviando os dados para o Google Sheets
+                const formData = new FormData();
+                formData.append('nome', nome || 'Equipa de Enfermagem');
+                formData.append('elogio', texto);
+
                 await fetch(scriptURL, {
                     method: 'POST',
-                    mode: 'no-cors', 
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    mode: 'no-cors',
+                    body: formData   // FormData em vez de JSON
                 });
-                
-                // Redireciona para a página de obrigado
+
                 window.location.href = './obg.html';
             } catch (error) {
                 console.error('Erro:', error);
