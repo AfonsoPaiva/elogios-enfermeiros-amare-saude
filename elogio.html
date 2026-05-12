@@ -58,6 +58,7 @@
                 </div>
         </div>
 
+        <div id="nurse-label" class="nurse-label"></div>
 
         <div class="content-panel">
             <div class="title">Deixe um elogio!</div>
@@ -104,12 +105,12 @@
                 </svg>`;
         }
 
-        // 3. Escrever o nome na etiqueta (CORREÇÃO DO ERRO AQUI)
+        // 3. Escrever o nome na etiqueta
         if (nome && nurseLabel) {
             nurseLabel.textContent = nome;
         }
 
-        // 4. Função principal de envio
+        // 4. Função principal de envio (CORRIGIDA)
         async function enviarElogio() {
             const texto = document.getElementById('elogio-text').value.trim();
             const btn = document.getElementById('btn-enviar');
@@ -127,10 +128,11 @@
                 elogio: texto
             };
 
-            // Substitua pelo seu URL do Apps Script
+            // URL da sua Aplicação Web do Google Script
             const scriptURL = 'https://script.google.com/macros/s/AKfycbxYw0YZhtwWBq9oTndMSorTkpbkgGKGCkT4rjB7FmlmxdjoV7McC4RMw_tWmncemc_g/exec';
 
             try {
+                // Enviando os dados para o Google Sheets
                 await fetch(scriptURL, {
                     method: 'POST',
                     mode: 'no-cors', 
@@ -138,16 +140,17 @@
                     body: JSON.stringify(payload)
                 });
                 
+                // Redireciona para a página de obrigado
                 window.location.href = './obg.html';
             } catch (error) {
                 console.error('Erro:', error);
-                alert('Houve um erro ao enviar. Tente novamente.');
+                alert('Houve um erro ao enviar. Verifique a sua ligação.');
                 btn.disabled = false;
                 btn.textContent = "Enviar elogio";
             }
         }
 
-        // 5. Ajustar links de navegação para manter os parâmetros
+        // 5. Ajustar links para manter os parâmetros de nome/foto
         if (nome || foto) {
             const inspLink = document.getElementById('insp-link');
             const inspUrl = new URL('./Insp.html', window.location.href);
