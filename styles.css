@@ -547,7 +547,7 @@ body {
 .equipa-page .team-card-icon-circle {
     position: absolute;
     top: 0;
-    left: 50%;
+    left: 25%;
     transform: translateX(-50%);
     width: 156px;
     height: 156px;
