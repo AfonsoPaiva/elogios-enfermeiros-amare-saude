@@ -112,38 +112,37 @@
 
         // 4. Função principal de envio (CORRIGIDA)
         async function enviarElogio() {
-            const texto = document.getElementById('elogio-text').value.trim();
-            const btn = document.getElementById('btn-enviar');
+    const texto = document.getElementById('elogio-text').value.trim();
+    const btn = document.getElementById('btn-enviar');
 
-            if (!texto) {
-                alert('Por favor escreva o seu elogio antes de enviar.');
-                return;
-            }
+    if (!texto) {
+        alert('Por favor escreva o seu elogio antes de enviar.');
+        return;
+    }
 
-            btn.disabled = true;
-            btn.textContent = "A enviar...";
+    btn.disabled = true;
+    btn.textContent = "A enviar...";
 
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbwmbuF1rz9JnzjBV7NSx8g6-CNvpPRSDVDkn5lAW1hnSDFqCVnxwBhz-UJrxQCi8yk/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxYw0YZhtwWBq9oTndMSorTkpbkgGKGCkT4rjB7FmlmxdjoV7McC4RMw_tWmncemc_g/exec';
 
-            try {
-                const formData = new FormData();
-                formData.append('nome', nome || 'Equipa de Enfermagem');
-                formData.append('elogio', texto);
+    const params = new URLSearchParams();
+    params.append('nome', nome || 'Equipa de Enfermagem');
+    params.append('elogio', texto);
 
-                await fetch(scriptURL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    body: formData   // FormData em vez de JSON
-                });
+    try {
+        await fetch(scriptURL + '?' + params.toString(), {
+            method: 'POST',
+            mode: 'no-cors'
+        });
 
-                window.location.href = './obg.html';
-            } catch (error) {
-                console.error('Erro:', error);
-                alert('Houve um erro ao enviar. Verifique a sua ligação.');
-                btn.disabled = false;
-                btn.textContent = "Enviar elogio";
-            }
-        }
+        window.location.href = './obg.html';
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Houve um erro ao enviar. Verifique a sua ligação.');
+        btn.disabled = false;
+        btn.textContent = "Enviar elogio";
+    }
+}
 
         // 5. Ajustar links para manter os parâmetros de nome/foto
         if (nome || foto) {
