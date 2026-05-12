@@ -720,7 +720,6 @@ body {
 
 .sabe-page .btn-elogio {
     position: absolute;
-    left: 50%;
     transform: translateX(-50%);
     border: 2px solid var(--green-dark);
     border-radius: var(--border-radius-md);
