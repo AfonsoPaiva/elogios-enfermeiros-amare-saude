@@ -10,7 +10,7 @@
 <body>
     <div class="page insp-page">
         <!-- Botão voltar -->
-        <a href="./enf-ang.html" class="back-btn" style="position: absolute; top: 34px; right: 16px; z-index: 10;">
+        <a href="#" class="back-btn" id="back-btn" style="position: absolute; top: 34px; right: 16px; z-index: 10;">
             <span></span>
             <span></span>
         </a>
@@ -32,8 +32,26 @@
             <!-- Gradiente de desvanecimento -->
             <div class="fade-overlay"></div>
 
-            <a href="./enf-ang.html" class="btn-elogio">Deixa o teu elogio!</a>
+            <a href="#" id="btn-elogio" class="btn-elogio">Deixa o teu elogio!</a>
         </div>
     </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const returnPage = params.get('return') || 'enf-ang';
+        const nome = params.get('nome');
+        const foto = params.get('foto');
+
+        // Construir URL de retorno com os parâmetros preservados
+        function buildReturnUrl(page) {
+            const url = new URL('./' + page + '.html', window.location.href);
+            if (nome) url.searchParams.set('nome', nome);
+            if (foto) url.searchParams.set('foto', foto);
+            return url.toString();
+        }
+
+        document.getElementById('back-btn').href = buildReturnUrl(returnPage);
+        document.getElementById('btn-elogio').href = buildReturnUrl(returnPage);
+    </script>
 </body>
 </html>
