@@ -799,7 +799,6 @@ body {
 .insp-page .btn-elogio {
     position: absolute;
     bottom: 20px;
-    left: 50%;
     transform: translateX(-50%);
     border: 2px solid var(--green-dark);
     border-radius: var(--border-radius-md);
