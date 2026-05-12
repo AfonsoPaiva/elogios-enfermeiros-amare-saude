@@ -45,23 +45,10 @@ body {
    ============================================ */
 .page {
     width: 100%;
-    max-width: 430px;
-    height: 100vh;
-    min-height: 600px;
-    background-color: var(--white);
+    min-height: 100vh;
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    visibility: visible !important;
-    opacity: 1 !important;
-}
-
-.content-panel *, .nurse-grid *, .insp-list * {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
 }
 
 /* ============================================
