@@ -941,3 +941,10 @@ body {
     white-space: nowrap;
     border: 0;
 }
+/* ============================================
+   GSAP – evita flash de conteúdo não animado
+   O animations.js repõe visibility:visible
+   ============================================ */
+.page {
+    visibility: hidden;
+}
