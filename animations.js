@@ -1,6 +1,7 @@
 (function () {
     'use strict';
 
+    
     function q(sel, scope) { return (scope || document).querySelector(sel); }
     function qa(sel, scope) { return [...(scope || document).querySelectorAll(sel)]; }
 
