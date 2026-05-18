@@ -11,26 +11,31 @@
         const page = q('.landing');
         if (!page) return;
 
-        // Reset imediato para garantir que estão visíveis antes de animar
-        gsap.set(['.landing .date', '.landing h1', '.landing .subtitle', '.landing .btn-continue', '.landing .illustration'], { opacity: 1, y: 0, scale: 1 });
+        // A opacidade inicial já começa a 0 no CSS! No JS definimos apenas a transformação inicial
+        gsap.set('.landing .date', { y: -20 });
+        gsap.set('.landing h1', { y: 20 });
+        gsap.set('.landing .subtitle', { y: 20 });
+        gsap.set('.landing .btn-continue', { scale: 0.95, y: 10 });
+        gsap.set('.landing .illustration', { y: 30 });
 
         const tl = gsap.timeline();
-        tl.from('.landing .date', { opacity: 0, y: -20 })
-          .from('.landing h1', { opacity: 0, y: 20 }, '-=0.4')
-          .from('.landing .subtitle', { opacity: 0, y: 20 }, '-=0.4')
-          .from('.landing .btn-continue', { opacity: 0, scale: 0.9, y: 10 }, '-=0.3')
-          .from('.landing .illustration', { opacity: 0, y: 30 }, '-=0.3');
+        tl.to('.landing .date', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' })
+          .to('.landing h1', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' }, '-=0.45')
+          .to('.landing .subtitle', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' }, '-=0.45')
+          .to('.landing .btn-continue', { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' }, '-=0.4')
+          .to('.landing .illustration', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' }, '-=0.4');
     }
 
     function animHome() {
         const page = q('.home');
         if (!page) return;
         
-        gsap.set(['.home .header', '.home .content'], { opacity: 1, y: 0 });
+        gsap.set('.home .header', { y: -30 });
+        gsap.set('.home .content', { y: 40 });
         
         const tl = gsap.timeline();
-        tl.from('.home .header', { opacity: 0, y: -30 })
-          .from('.home .content', { opacity: 0, y: 50 }, '-=0.3');
+        tl.to('.home .header', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' })
+          .to('.home .content', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', clearProps: 'transform' }, '-=0.35');
     }
 
     function animGenericPage(className) {
@@ -40,11 +45,42 @@
         const header = q(className + ' .header-title') || q(className + ' .profile-circle-outer');
         const panel = q(className + ' .content-panel');
 
-        gsap.set([header, panel], { opacity: 1, y: 0 });
+        // Determinar a direção de y para o header
+        // Se for o círculo de perfil (profile-circle-outer), surge de baixo (y positivo)
+        const isProfileCircle = header && header.classList.contains('profile-circle-outer');
 
         const tl = gsap.timeline();
-        if (header) tl.from(header, { opacity: 0, y: -20 });
-        if (panel) tl.from(panel, { opacity: 0, y: 40 }, '-=0.3');
+        if (isProfileCircle && header && panel) {
+            // Se for a página de elogio (profile circle), animamos ambos juntos como um único bloco
+            gsap.set([header, panel], { y: 50 });
+            tl.to([header, panel], { opacity: 1, y: 0, duration: 0.65, ease: 'power2.out', clearProps: 'transform' });
+        } else {
+            // Caso contrário (outras páginas genéricas), animamos em cascata para um visual dinâmico
+            const headerStartY = header ? -20 : 0;
+            gsap.set(header, { y: headerStartY });
+            gsap.set(panel, { y: 40 });
+            if (header) tl.to(header, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' });
+            if (panel) tl.to(panel, { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out', clearProps: 'transform' }, '-=0.35');
+        }
+    }
+
+    function animObg() {
+        const page = q('.obg-page');
+        if (!page) return;
+
+        // Definir transformações iniciais (a opacidade já começa a 0 no CSS!)
+        gsap.set('.obg-page .date', { y: -20 });
+        gsap.set('.obg-page h1', { y: 20 });
+        gsap.set('.obg-page .message', { y: 20 });
+        gsap.set('.obg-page .btn-again', { scale: 0.95, y: 15 });
+        gsap.set('.obg-page .illustration', { y: 30 });
+
+        const tl = gsap.timeline();
+        tl.to('.obg-page .date', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' })
+          .to('.obg-page h1', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' }, '-=0.45')
+          .to('.obg-page .message', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' }, '-=0.45')
+          .to('.obg-page .btn-again', { opacity: 1, scale: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' }, '-=0.4')
+          .to('.obg-page .illustration', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out', clearProps: 'transform' }, '-=0.4');
     }
 
     function bindMicroInteractions() {
@@ -61,12 +97,12 @@
 
         animLanding();
         animHome();
-        animGenericPage('.escolha-enf');
+        animGenericPage('.escolha-med');
         animGenericPage('.elogio-page');
         animGenericPage('.equipa-page');
         animGenericPage('.insp-page');
         animGenericPage('.sabe-page');
-        animGenericPage('.obg-page');
+        animObg();
 
         bindMicroInteractions();
     }

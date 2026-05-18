@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap" />
+    <title>Escolha o seu Médico</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="./animations.js" defer></script>
+</head>
+
+<body>
+    <div class="page escolha-med" style="position: relative;">
+        <!-- Botão voltar -->
+        <a href="./home.html" class="back-btn" style="position: absolute; top: 34px; right: 16px; z-index: 10;">
+            <span></span>
+            <span></span>
+        </a>
+
+        <div class="header-title">
+            <h1>Escolha o seu<br><span class="highlight">Médico</span></h1>
+        </div>
+
+        <div class="content-panel">
+            <!-- Secção dos Médicos -->
+            <div class="section-label">Os nossos médicos</div>
+            <div class="nurse-grid" style="margin-bottom: 30px;">
+                <a href="./elogio.html?nome=Carla%20Correlo&foto=Carla%20Correlo.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./Carla Correlo.png" alt="Carla Correlo"
+                            onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">Carla Correlo</span>
+                </a>
+
+                <a href="./elogio.html?nome=Carlos%20Faria&foto=Carlos%20Faria.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./Carlos Faria.png" alt="Carlos Faria" onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">Carlos Faria</span>
+                </a>
+
+                <a href="./elogio.html?nome=João%20Pereira&foto=João%20Pereira.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./João Pereira.png" alt="João Pereira" onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">João Pereira</span>
+                </a>
+
+                <a href="./elogio.html?nome=Ricardo%20Armada&foto=Ricardo%20Armada.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./Ricardo Armada.png" alt="Ricardo Armada" onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">Ricardo Armada</span>
+                </a>
+
+                <a href="./elogio.html?nome=Rui%20Eusébio&foto=Rui%20Eusébio.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./Rui Eusébio.png" alt="Rui Eusébio" onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">Rui Eusébio</span>
+                </a>
+            </div>
+
+            <!-- Secção dos Internos -->
+            <div class="section-label" style="margin-top: 30px;">Os nossos internos</div>
+            <div class="nurse-grid">
+                <a href="./elogio.html?nome=Filipa%20Macedo&foto=Filipa%20Macedo.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./Filipa Macedo.png" alt="Filipa Macedo"
+                            onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">Filipa Macedo</span>
+                </a>
+
+                <a href="./elogio.html?nome=Luís%20Santos&foto=Luís%20Santos.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./Luís Santos.png" alt="Luís Santos" onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">Luís Santos</span>
+                </a>
+
+                <a href="./elogio.html?nome=Marta%20Alvarez&foto=Marta%20Alvarez.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./Marta Alvarez.png" alt="Marta Alvarez" onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">Marta Alvarez</span>
+                </a>
+
+                <a href="./elogio.html?nome=Marta%20Costa&foto=Marta%20Costa.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./Marta Costa.png" alt="Marta Costa" onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">Marta Costa</span>
+                </a>
+
+                <a href="./elogio.html?nome=Sara%20Martins&foto=Sara%20Martins.png" class="nurse-card">
+                    <div class="photo-area">
+                        <img src="./Sara Martins.png" alt="Sara Martins" onerror="this.style.background='#bbb'" />
+                    </div>
+                    <span class="nurse-name">Sara Martins</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

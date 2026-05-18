@@ -9,6 +9,42 @@
     padding: 0;
 }
 
+/* Esconder a barra de scroll para todos os elementos (Chrome, Safari, Opera, Edge) */
+*::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* Esconder a barra de scroll para Firefox e IE/Edge legado */
+* {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+}
+
+/* Garantir que a página apenas seja scrollable verticalmente */
+html,
+body {
+    overflow-x: hidden !important;
+}
+
+/* Prevenir FOUC (flicker) nas animações GSAP, definindo o estado inicial invisível em CSS */
+.landing .date,
+.landing h1,
+.landing .subtitle,
+.landing .btn-continue,
+.landing .illustration,
+.home .header,
+.home .content,
+.header-title,
+.profile-circle-outer,
+.content-panel,
+.obg-page .date,
+.obg-page h1,
+.obg-page .message,
+.obg-page .btn-again,
+.obg-page .illustration {
+    opacity: 0;
+}
+
 :root {
     /* Cores principais */
     --green-dark: #0c9543;
@@ -50,19 +86,14 @@ body {
     min-height: 600px;
     background-color: var(--white);
     position: relative;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
     display: flex;
     flex-direction: column;
     visibility: visible !important;
     opacity: 1 !important;
 }
 
-.content-panel *, .nurse-grid *, .insp-list * {
-    opacity: 1 !important;
-    transform: none !important;
-    visibility: visible !important;
-}
 
 /* ============================================
    PÁGINA LANDING (index.html)
@@ -249,31 +280,31 @@ body {
 }
 
 /* ============================================
-   PÁGINA ESCOLHA ENFERMEIRO (escolha-enf.html)
+   PÁGINA ESCOLHA MÉDICO (escolha-med.html)
    ============================================ */
-.escolha-enf {
+.escolha-med {
     min-height: 100vh;
     background: var(--green-gradient);
     display: flex;
     flex-direction: column;
 }
 
-.escolha-enf .header-title {
+.escolha-med .header-title {
     padding: 50px 16px 0;
     color: var(--white);
 }
 
-.escolha-enf .header-title h1 {
+.escolha-med .header-title h1 {
     font-size: 2rem;
     font-weight: 800;
     line-height: 1.15;
 }
 
-.escolha-enf .header-title h1 .highlight {
+.escolha-med .header-title h1 .highlight {
     font-size: 2.25rem;
 }
 
-.escolha-enf .content-panel {
+.escolha-med .content-panel {
     background-color: var(--ivory);
     border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
     flex: 1;
@@ -281,20 +312,20 @@ body {
     margin-top: 10px;
 }
 
-.escolha-enf .section-label {
+.escolha-med .section-label {
     color: var(--green-dark);
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
-.escolha-enf .nurse-grid {
+.escolha-med .nurse-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
 }
 
-.escolha-enf .nurse-card {
+.escolha-med .nurse-card {
     background-color: var(--red);
     border-radius: var(--border-radius-md);
     overflow: hidden;
@@ -307,11 +338,11 @@ body {
     transition: transform 0.2s;
 }
 
-.escolha-enf .nurse-card:active {
+.escolha-med .nurse-card:active {
     transform: scale(0.97);
 }
 
-.escolha-enf .nurse-card .photo-area {
+.escolha-med .nurse-card .photo-area {
     width: calc(100% - 24px);
     margin: 12px 12px 0;
     aspect-ratio: 1 / 1;
@@ -320,14 +351,14 @@ body {
     overflow: hidden;
 }
 
-.escolha-enf .nurse-card .photo-area img {
+.escolha-med .nurse-card .photo-area img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.escolha-enf .nurse-card .nurse-name {
+.escolha-med .nurse-card .nurse-name {
     color: var(--white);
     font-size: 0.9rem;
     font-weight: 600;
@@ -676,6 +707,7 @@ body {
     color: var(--green-dark);
     margin-bottom: 20px;
 }
+
 .sabe-page .scroll-area {
     flex: 1;
     overflow-y: auto;
@@ -719,7 +751,9 @@ body {
 
 
 .sabe-page .btn-elogio {
+    z-index: 1000000;
     position: absolute;
+    left: 50%;
     transform: translateX(-50%);
     border: 2px solid var(--green-dark);
     border-radius: var(--border-radius-md);
@@ -799,6 +833,7 @@ body {
 .insp-page .btn-elogio {
     position: absolute;
     bottom: 20px;
+    left: 50%;
     transform: translateX(-50%);
     border: 2px solid var(--green-dark);
     border-radius: var(--border-radius-md);
@@ -923,11 +958,11 @@ body {
         padding: 24px 14px;
     }
 
-    .escolha-enf .nurse-grid {
+    .escolha-med .nurse-grid {
         gap: 10px;
     }
 
-    .escolha-enf .nurse-card .photo-area {
+    .escolha-med .nurse-card .photo-area {
         width: calc(100% - 16px);
         margin: 8px 8px 0;
     }
